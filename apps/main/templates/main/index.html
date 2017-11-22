@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}" media="screen" title="no title" charset="utf-8"> -->
+    <title>Quotes Exam</title>
+</head>
+<body>
+    <h1>REGISTER</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}            
+        <form action="/register" method="post">
+        <!-- <input type="hidden" name="csrfmiddlewaretoken" value="jflakfjal;kgjal;kj"/> -->
+            {% csrf_token %}
+            <p>NAME: <input type="text" name="name"></p>
+            <p>ALIAS: <input type="text" name="alias"></p>
+            <p>EMAIL: <input type="email" name="email"></p>
+            <p>PASSWORD: <input type="password" name="password"></p>
+            <p><h4><span style="color:lightcoral">* Password should be at least 8 characters</span></h4></p>
+            <p>CONFIRM PASSWORD: <input type="password" name="confirm_password"></p>
+            <p>DATE OF BIRTH: <input type="date" name="birthday"></p>
+            <button type="submit" value="Register">Register</button>
+            <p></p>
+            {% for name in Prev_Users %}
+                <li>{{Prev_Users.name}}</li>
+            {% endfor %}
+        </form>
+    <h1>LOGIN</h1>    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}          
+        <form action="/main" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="jflakfjal;kgjal;kj"/>
+            {% csrf_token %}
+            <p>EMAIL: <input type="email" name="email"></p>
+            <p>PASSWORD: <input type="password" name="password"></p>
+            <button type="submit" value="Login">Login</button>
+        </form>
+</body>
+</html>

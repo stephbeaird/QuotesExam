@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}" media="screen" title="no title" charset="utf-8"> -->
+    <title>{{Users.Name}}</title>
+</head>
+<body>
+    <h3>Posts by {{Users.Name.id}}</h3>
+        <p>Count: 2</p>
+        <h3>{{List.Quote}}</h3>
+        <!-- <p>William Arthur Ward: The pessimist complains about the wind;
+        the optimist expects it to change; the realist adjusts the sail.</p>
+        Posted by <a href="main/quotes">{{Users.Name}}</a> -->
+        <h1>{{Users.Name}}</h1>
+            {% for name in users.name %}
+                <p><a href='/quotes/{{Users.Name}}'</a></p>
+            {% endfor %}   
+        <p><a href="logout">LOGOUT</a></p>
+        <p><a href="dashboard">DASHBOARD</a></p>        
+</body>
+</html>

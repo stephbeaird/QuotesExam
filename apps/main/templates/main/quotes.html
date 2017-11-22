@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}" media="screen" title="no title" charset="utf-8"> -->
+    {% load static %}
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>WELCOME</h1>
+    <!-- <form action="/quotes" method="post">
+        {% csrf_token %} 
+        <input type="hidden" name="csrfmiddlewaretoken"/> -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}     
+        <h3><u><span style="color:lightcoral">Quotable Quotes:</span></u></h3> 
+            <p>Ralph Waldo Emerson: Do not go where the path may 
+            lead, go instead where there is no path and leave a trail.</p>
+            Posted by <a href="main/users">Gracia</a>
+            <h1>{{Users.name}}</h1>
+                {% for name in users.name %}
+                    <p><a href='/quotes/{{Users.Name.id}}'/></p>
+                {% endfor %}                                                   
+            <button type="text" name="add">Add To My List</button>            
+            <p>Aldous Huxley: Experience is not what happens to you; 
+            it's what you do with what happens to you.</p>
+            Posted by <a href="main/users">Joe</a>
+                {% for name in users.name %}
+                    <p><a href='/quotes/{{Users.Name.id}}'/></p>
+                {% endfor %}                                       
+            <p><button type="text" name="add">Add To My List</button>                        
+            <p>William Arthur Ward: The pessimist complains about the wind;
+            the optimist expects it to change; the realist adjusts the sail.</p>
+            Posted by <a href="main/users">Oliver</a>
+                {% for name in users.name %}
+                    <p><a href='/quotes/{{Users.Name.id}}'/></p>
+                {% endfor %}              
+            <p><button type="text" name="add">Add To My List</button>                        
+            <p>Nelson Mandela: If you talk to a man in a language he understands,
+            that goes to his head. If you talk to him in his language, that goes to his heart.</p>
+            Posted by <a href="main/users">KB</a>
+                {% for name in users.name %}
+                    <p><a href='/quotes/{{Users.Name.id}}'/></p>
+                {% endfor %}              
+            <p><button type="text" name="add">Add To My List</button> 
+            
+            
+
+        <h3><u><span style="color:lightcoral">Your Favorites:</span></u></h3>
+            <p>John C. Maxwell: A man must be big enough to admit his mistakes, smart enough to profit from them,
+            and strong enough to correct them.</p>
+            Posted by <a href="Joe">Joe</a>
+            <button type="text" name="remove">Remove From My List</button>
+            <p>Henry David Thoreau: It's not what you look at that matters,
+            it's what you see.</p>
+            Posted by <a href="Oliver">Oliver</a>            
+            <button type="text" name="remove">Remove From My List</button>            
+
+        <h3><u><span style="color:lightcoral">Contribute a Quote:</span></u></h3>
+        <form action="/quotes" method="POST">
+            <!-- <input type="hidden" name="csrfmiddlewaretoken"/> -->
+                {% csrf_token %}
+                {% for message in Contribute %}
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in Contribute %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}     
+                {% endfor %}
+                <p>Quoted By: <input type="text" name="author"></p>
+                <p>Message:</p> 
+                    <textarea rows="5" cols="50"></textarea></p>
+            <button type="submit" name="submit">Submit</button>
+        </form>
+    <p><a href="logout">LOGOUT</a></p>
+</body>
+</html>
